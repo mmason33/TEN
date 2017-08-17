@@ -75,6 +75,7 @@ class Ten_Plugin {
 		$this->set_locale();
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
+		$this->define_widget_hooks();
 
 	}
 
@@ -192,7 +193,6 @@ class Ten_Plugin {
 		$plugin_widget = new Ten_Plugin_Widget( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'widget_init', $plugin_widget, 'ten_plugin_widget' );
-
 
 	}
 
