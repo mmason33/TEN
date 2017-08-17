@@ -144,25 +144,17 @@ class Ten_Plugin_Admin {
 		);
 
 		add_settings_field(
-				$this->option_name . '_position',
-				__( 'Text position', 'ten-plugin' ),
-				array( $this, $this->option_name . '_position_cb' ),
+				$this->option_name . '_count',
+				__( 'The number of lovely cat images displayed', 'ten-plugin' ),
+				array( $this, $this->option_name . '_count_cb' ),
 				$this->plugin_name,
 				$this->option_name . '_general',
-				array( 'label_for' => $this->option_name . '_position' )
-		);
-
-		add_settings_field(
-				$this->option_name . '_day',
-				__( 'Post is outdated after', 'ten-plugin' ),
-				array( $this, $this->option_name . '_day_cb' ),
-				$this->plugin_name,
-				$this->option_name . '_general',
-				array( 'label_for' => $this->option_name . '_day' )
+				array( 'label_for' => $this->option_name . '_count' )
 			);
 
-			register_setting( $this->plugin_name, $this->option_name . '_position', array( $this, $this->option_name . '_sanitize_position' ) );
-				register_setting( $this->plugin_name, $this->option_name . '_day', 'intval' );
+
+			register_setting( $this->plugin_name, $this->option_name . '_count', 'intval' );
+			//var_dump(get_option($this->option_name . '_count'));
 
 	}
 
@@ -176,46 +168,12 @@ class Ten_Plugin_Admin {
 		}
 
 		/**
-			 * Render the radio input field for position option
+			 * Render the treshold day input for this plugin
 			 *
 			 * @since  1.0.0
 			 */
-			public function ten_plugin_position_cb() {
-				?>
-					<fieldset>
-						<label>
-							<input type="radio" name="<?php echo $this->option_name . '_position' ?>" id="<?php echo $this->option_name . '_position' ?>" value="before">
-							<?php _e( 'Before the content', 'ten-plugin' ); ?>
-						</label>
-						<br>
-						<label>
-							<input type="radio" name="<?php echo $this->option_name . '_position' ?>" value="after">
-							<?php _e( 'After the content', 'ten-plugin' ); ?>
-						</label>
-					</fieldset>
-				<?php
+			public function ten_plugin_count_cb() {
+				echo '<input type="text" name="' . $this->option_name . '_count' . '" id="' . $this->option_name . '_count' . '"> '. __( 'Images', 'ten-plugin' );
 			}
-
-			/**
-				 * Render the treshold day input for this plugin
-				 *
-				 * @since  1.0.0
-				 */
-				public function ten_plugin_day_cb() {
-					echo '<input type="text" name="' . $this->option_name . '_day' . '" id="' . $this->option_name . '_day' . '"> '. __( 'days', 'ten-plugin' );
-				}
-
-				/**
-					 * Sanitize the text position value before being saved to database
-					 *
-					 * @param  string $position $_POST value
-					 * @since  1.0.0
-					 * @return string           Sanitized value
-					 */
-					public function outdated_notice_sanitize_position( $position ) {
-						if ( in_array( $position, array( 'before', 'after' ), true ) ) {
-					        return $position;
-					    }
-					}
 
 }
