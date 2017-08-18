@@ -76,26 +76,45 @@
 	   return obj;
 	 }
 
-	 $(document).ready( function () {
+	 function apiCall() {
 		 var count = parseInt($('#Ten-Plugin').attr('data-count'));
 		 console.log(count);
 		 $.ajax({
 			 method: 'GET',
-			 url: 'http://thecatapi.com/api/images/get?api_key=MjE1MDY5&format=xml&results_per_page=3'
+			 url: 'http://thecatapi.com/api/images/get?api_key=MjE1MDY5&format=xml&results_per_page=' + count
 		 }).done(function (response){
 			 var catData = xmlToJson(response);
-			 console.log(catData.response.data.images.image);
 
-			 for (var image in catData.response.data.images.image) {
-			 		console.log(catData.response.data.images.image[image].url);
-				 	$('#Ten-Plugin').append(
+			 for (var picture in catData.response.data.images.image) {
+					console.log(catData.response.data.images.image[picture].url);
+					$('#Ten-Plugin').append(
 						//background images to have all the images be the same size for formatting and styling purpose
-						'<figure class="ten-plugin--image--wrap" style="background: url(' + catData.response.data.images.image[image].url + ') no-repeat center center;background-size:cover;">' +
-							//'<img src="' + catData.response.data.images.image[image].url + '" alt="cat-image" class="ten-plugin--image">' +
+						'<figure id="' + catData.response.data.images.image[picture].id + '" class="ten-plugin--image--wrap" style="background-image: url(' + catData.response.data.images.image[picture].url + ');background-repeat:no-repeat;background-position: center center;background-size:cover;">' +
 						'</figure>'
 					);
 			 }
 		 });
+	 }
+
+	 function clickHandler(clickedElement) {
+
+		 var count = parseInt($('#Ten-Plugin').attr('data-count'));
+		 console.log(count);
+		 $.ajax({
+			 method: 'GET',
+			 url: 'http://thecatapi.com/api/images/get?api_key=MjE1MDY5&format=xml&results_per_page=1'
+		 }).done(function (response){
+			 var catData = xmlToJson(response);
+			 console.log(catData.response.data.images.image);
+			 $(clickedElement).css('background-image', 'url(' + catData.response.data.images.image.url + ')');
+		 });
+	 }
+
+	 $(document).ready(apiCall);
+
+	 $(document).on('click', '.ten-plugin--image--wrap', function () {
+		 clickHandler(this);
+		 console.log(this);
 	 });
 
 

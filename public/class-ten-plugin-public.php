@@ -106,7 +106,7 @@ class Ten_Plugin_Public {
 	 * @since  1.0.0
 	 */
 	public function display_widget() {
-		include_once 'partials/ten-plugin-public-display.php';
+			include_once 'partials/ten-plugin-public-display.php';
 	}
 
 }

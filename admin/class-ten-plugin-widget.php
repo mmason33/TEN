@@ -40,11 +40,11 @@ class Ten_Plugin_Widget extends WP_Widget {
 	 */
 	private $version;
 
-  /**
-   * Constructs the new widget.
-   *
-   * @see WP_Widget::__construct()
-   */
+	  /**
+	   * Constructs the new widget.
+	   *
+	   * @see WP_Widget::__construct()
+	   */
    function __construct() {
      $this->plugin_name = $plugin_name;
      $this->version = $version;
@@ -54,10 +54,10 @@ class Ten_Plugin_Widget extends WP_Widget {
      'Ten_Plugin_Widget',
 
      // Widget name will appear in UI
-     __('TEN Widget', 'text_domain'),
+     __('TEN Widget'),
 
      // Widget description
-     array( 'description' => __( 'Sample widget based on WPBeginner Tutorial', 'wpb_widget_domain' ), )
+     array( 'description' => __( 'The TEN Plugin - Returns lovely cats!'), )
      );
    }
 

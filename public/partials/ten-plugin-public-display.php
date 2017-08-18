@@ -13,6 +13,6 @@
  */
 ?>
 
-<section id="Ten-Plugin" class="ten-plugin" data-count="<?php echo get_option('ten_plugin_count'); ?>">
+<section id="Ten-Plugin" class="ten-plugin ten-plugin-widget" data-count="<?php echo get_option('ten_plugin_count'); ?>">
 
 </section>
