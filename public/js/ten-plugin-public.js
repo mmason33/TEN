@@ -97,20 +97,19 @@
 	 }
 
 	 function clickHandler(clickedElement) {
-
-		//  var count = parseInt($('#Ten-Plugin').attr('data-count'));
-		//  console.log(count);
-		//  $.ajax({
-		// 	 method: 'GET',
-		// 	 url: 'http://thecatapi.com/api/images/get?api_key=MjE1MDY5&format=xml&results_per_page=1'
-		//  }).done(function (response){
-		// 	 var catData = xmlToJson(response);
-		// 	 console.log(catData.response.data.images.image);
-		// 	 $(clickedElement).css('background-image', 'url(' + catData.response.data.images.image.url + ')');
-		//  });
+		 var count = parseInt($('#Ten-Plugin').attr('data-count'));
+		 console.log(count);
+		 $.ajax({
+			 method: 'GET',
+			 url: 'http://thecatapi.com/api/images/get?api_key=MjE1MDY5&format=xml&results_per_page=1'
+		 }).done(function (response){
+			 var catData = xmlToJson(response);
+			 console.log(catData.response.data.images.image);
+			 $(clickedElement).css('background-image', 'url(' + catData.response.data.images.image.url + ')');
+		 });
 	 }
 
-	 $(document).ready(apiCall);
+	//  $(document).ready(apiCall);
 
 	 $(document).on('click', '.ten-plugin--image--wrap', function () {
 		 clickHandler(this);
