@@ -178,7 +178,7 @@ class Ten_Plugin {
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
-		$this->loader->add_action('dynamic_sidebar', $plugin_public, 'display_widget');
+		// $this->loader->add_action('dynamic_sidebar', $plugin_public, 'display_widget');
 
 	}
 
@@ -193,7 +193,9 @@ class Ten_Plugin {
 
 		$plugin_widget = new Ten_Plugin_Widget( $this->get_plugin_name(), $this->get_version() );
 
-		$this->loader->add_action( 'widgets_init', $plugin_widget, 'ten_plugin_widget' );
+		$this->loader->add_action( 'widgets_init', $plugin_widget, 'ten_plugin_load_widget' );
+		// $this->loader->add_action( 'widgets_init', $plugin_widget, 'ten_plugin_widget' );
+		// $this->loader->add_action( 'sidebar_admin_setup', $plugin_widget, 'form' );
 
 	}
 
