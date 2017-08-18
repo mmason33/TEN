@@ -100,4 +100,13 @@ class Ten_Plugin_Public {
 
 	}
 
+	/**
+	 * Render the options page for plugin
+	 *
+	 * @since  1.0.0
+	 */
+	public function display_widget() {
+		include_once 'partials/ten-plugin-public-display.php';
+	}
+
 }

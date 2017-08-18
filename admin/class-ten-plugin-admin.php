@@ -108,6 +108,7 @@ class Ten_Plugin_Admin {
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/ten-plugin-admin.js', array( 'jquery' ), $this->version, false );
 
 	}
+
 	/**
 	 * Add an options page under the Settings submenu
 	 *
