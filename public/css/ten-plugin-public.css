@@ -2,3 +2,15 @@
  * All of the CSS for your public-facing functionality should be
  * included in this file.
  */
+
+#Ten-Plugin {}
+
+.ten-plugin {}
+
+.ten-plugin--image--wrap {
+  position: relative;
+  height: 300px;
+  width: 100%;
+}
+
+.ten-plugin--image {}
