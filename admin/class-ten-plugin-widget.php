@@ -45,9 +45,21 @@ class Ten_Plugin_Widget extends WP_Widget {
    *
    * @see WP_Widget::__construct()
    */
-	 function __construct() {
-      parent::__construct( 'ten_widget', 'TEN' );
-	 }
+   function __construct() {
+     $this->plugin_name = $plugin_name;
+     $this->version = $version;
+     parent::__construct(
+
+     // Base ID of your widget
+     'Ten_Plugin_Widget',
+
+     // Widget name will appear in UI
+     __('TEN Widget', 'text_domain'),
+
+     // Widget description
+     array( 'description' => __( 'Sample widget based on WPBeginner Tutorial', 'wpb_widget_domain' ), )
+     );
+   }
 
   /**
    * The widget's HTML output.
@@ -58,7 +70,7 @@ class Ten_Plugin_Widget extends WP_Widget {
    *                        before_widget, and after_widget.
    * @param array $instance The settings for the particular instance of the widget.
    */
-  function widget( $args, $instance ) {}
+  public function widget( $args, $instance ) {}
 
   /**
    * The widget update handler.
@@ -70,7 +82,7 @@ class Ten_Plugin_Widget extends WP_Widget {
    * @return array The updated instance of the widget.
    */
 
-  function update( $new_instance, $old_instance ) {
+  public function update( $new_instance, $old_instance ) {
       return $new_instance;
   }
 
@@ -80,14 +92,13 @@ class Ten_Plugin_Widget extends WP_Widget {
    * @param array $instance The current widget settings.
    * @return string The HTML markup for the form.
    */
-  function form( $instance ) {
+  public function form( $instance ) {
       return '';
   }
-}
 
-function ten_plugin_widget() {
-  register_widget('ten_widget');
-	echo 'zzzzzzzzzzzzzz';
+  public function ten_plugin_widget() {
+    register_widget('ten_plugin_widget');
+  }
 }
 
 ?>
