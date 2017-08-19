@@ -96,7 +96,14 @@ class Ten_Plugin_Public {
 		 * class.
 		 */
 
+		// wp_localize_script( 'some_handle', 'object_name', $translation_array );
+
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/ten-plugin-public.js', array( 'jquery' ), $this->version, true );
+
+		// wp_localize_script( $this->plugin_name, 'ten_plugin_public_vars', array(
+		// 		'alert' => __('Hey! You have clicked the button!', 'ten')
+		// 	)
+		// );
 
 	}
 

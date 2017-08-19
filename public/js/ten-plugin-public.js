@@ -101,10 +101,10 @@
 		 console.log(count);
 		 $.ajax({
 			 method: 'GET',
-			 url: 'http://thecatapi.com/api/images/get?api_key=MjE1MDY5&format=xml&results_per_page=1'
+			 url: '/wp-content/plugins/ten-plugin/public/partials/ten-plugin-ajax.php'
 		 }).done(function (response){
 			 var catData = xmlToJson(response);
-			 console.log(catData.response.data.images.image);
+			 console.log(catData);
 			 $(clickedElement).css('background-image', 'url(' + catData.response.data.images.image.url + ')');
 		 });
 	 }
