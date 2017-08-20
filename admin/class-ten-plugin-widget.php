@@ -52,16 +52,25 @@ class Ten_Plugin_Widget extends WP_Widget {
 		?>
 			<section id="Ten-Plugin" class="ten-plugin ten-plugin-widget widget" data-count="<?php echo get_option('ten_plugin_count'); ?>">
 			  <?php
-			    $url      = 'http://thecatapi.com/api/images/get?api_key=MjE1MDY5&format=xml&results_per_page=' .get_option('ten_plugin_count');
+					libxml_use_internal_errors(true);
+			    $url = 'http://thecatapi.com/api/images/get?api_key=MjE1MDY5&format=xml&results_per_page=' . get_option('ten_plugin_count');
 			    $response = wp_remote_get($url);
-			    $body     = wp_remote_retrieve_body($response);
-			    $xml  = simplexml_load_string($body);
-			    $code = $xml->data->images;
+					$body = wp_remote_retrieve_body($response);
+					$xml  = simplexml_load_string($body);
 
-			    foreach ($xml->data->images->image as $image ) {
-			      echo '<figure class="ten-plugin--image--wrap" style="background-image: url(' . $image->url . ');background-repeat:no-repeat;background-position:center center; background-size:cover;">
-			      </figure>';
-			    }
+					if ($xml === false) {
+						echo '<strong>No data available at this time</strong>';
+					} else {
+
+						echo '<h4>Ten Plugin</h4>';
+
+				    foreach ($xml->data->images->image as $image ) {
+				      echo '<figure class="ten-plugin--image--wrap"><div class="ten-plugin--image" style="background-image: url(' . $image->url . ');background-repeat:no-repeat;background-position:center center; background-size:cover;">
+							<small class="ten-plugin--hover--message hide">Load new kitty</small>
+				      </div><a href="'. $image->url . '" class="ten-plugin--download" download>&#9889 <small>Download</small></a></figure>';
+				    }
+
+					}
 			  ?>
 			</section>
 		<?php

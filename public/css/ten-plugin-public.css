@@ -5,12 +5,42 @@
 
 #Ten-Plugin {}
 
+#Ten-Plugin h4 {
+  text-align: center;
+}
+
 .ten-plugin {}
 
 .ten-plugin--image--wrap {
+  display: inline-block;
   position: relative;
-  height: 100px;
+  margin: 5px;
+  text-align: center;
+  height: 150px;
+  width: 45%;
+}
+
+.ten-plugin--image {
+  border: 2px solid #666;
+  border-radius: 10px;
+  position: relative;
+  height: 150px;
   width: 100%;
 }
 
-.ten-plugin--image {}
+.ten-plugin--hover--message.hide {
+  background: rgba(0,0,0,.75);
+  color: #fff;
+  display: none;
+  padding: 15px;
+  position: absolute;
+  width: 100%;
+}
+
+.ten-plugin--image--wrap:hover .ten-plugin--hover--message {
+  display: block;
+}
+
+.ten-plugin--download {
+  display: block;
+}

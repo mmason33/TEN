@@ -50,7 +50,6 @@
 	*/
 	function clickHandler(clickedElement) {
 	 var count = parseInt($('#Ten-Plugin').attr('data-count'));
-	 console.log(count);
 	 $.ajax({
 		 method: 'GET',
 		 url: '/wp-content/plugins/ten-plugin/public/partials/ten-plugin-ajax.php'
@@ -60,7 +59,7 @@
 	 });
 	}
 
-	$(document).on('click', '.ten-plugin--image--wrap', function () {
+	$(document).on('click', '.ten-plugin--image', function () {
 	 clickHandler(this);
 	});
 
