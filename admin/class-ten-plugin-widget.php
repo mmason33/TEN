@@ -25,59 +25,53 @@
 class Ten_Plugin_Widget extends WP_Widget {
 
 		function __construct() {
-		parent::__construct(
+			parent::__construct(
 
-		// Base ID of your widget
-		'Ten_Plugin_Widget',
+			// Base ID of your widget
+			'Ten_Plugin_Widget',
 
-		// Widget name will appear in UI
-		__('TEN Widget', 'ten_plugin_domain'),
+			// Widget name will appear in UI
+			__('TEN Widget', 'ten_plugin_domain'),
 
-		// Widget description
-		array( 'description' => __( 'Sample widget based on WPBeginner Tutorial', 'ten_plugin_domain' ), )
-		);
+			// Widget description
+			array( 'description' => __( 'Sample widget based on WPBeginner Tutorial', 'ten_plugin_domain' ), )
+			);
 		}
-
+		/**
+		* Register the Widget
+		*/
 		public function ten_plugin_load_widget() {
 		    register_widget( 'Ten_Plugin_Widget' );
 		}
-
-		// Creating widget front-end
-
+		/**
+		* Initial API call on when page request is made
+		* Consume the XML returned and render the data
+		* and HTML markup to the page
+		*/
 		public function widget( $args, $instance ) {
 		?>
 			<section id="Ten-Plugin" class="ten-plugin ten-plugin-widget widget" data-count="<?php echo get_option('ten_plugin_count'); ?>">
 			  <?php
-
 			    $url      = 'http://thecatapi.com/api/images/get?api_key=MjE1MDY5&format=xml&results_per_page=' .get_option('ten_plugin_count');
 			    $response = wp_remote_get($url);
 			    $body     = wp_remote_retrieve_body($response);
 			    $xml  = simplexml_load_string($body);
 			    $code = $xml->data->images;
 
-			    // var_dump($code);
-
 			    foreach ($xml->data->images->image as $image ) {
-			      // var_dump($image->url);
 			      echo '<figure class="ten-plugin--image--wrap" style="background-image: url(' . $image->url . ');background-repeat:no-repeat;background-position:center center; background-size:cover;">
 			      </figure>';
 			    }
-
 			  ?>
 			</section>
 		<?php
 		}
-
-		// Widget Backend
+		/**
+		* The form for the widget admin area
+		* No options for this widget
+		*/
 		public function form( $instance ) {
-
-		// Widget admin form
-		?>
-		<p>
-		There are no options for this Widget
-		</p>
-		<?php
+			echo '<p>There are no options for this Widget, please see the TEN Plugin settings page</p>';
 		}
 }
-
 ?>

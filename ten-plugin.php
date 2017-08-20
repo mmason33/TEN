@@ -30,24 +30,6 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-/**
- * The code that runs during plugin activation.
- * This action is documented in includes/class-ten-plugin-activator.php
- */
-function activate_ten_plugin() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-ten-plugin-activator.php';
-	Ten_Plugin_Activator::activate();
-}
-
-/**
- * The code that runs during plugin deactivation.
- * This action is documented in includes/class-ten-plugin-deactivator.php
- */
-function deactivate_ten_plugin() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-ten-plugin-deactivator.php';
-	Ten_Plugin_Deactivator::deactivate();
-}
-
 register_activation_hook( __FILE__, 'activate_ten_plugin' );
 register_deactivation_hook( __FILE__, 'deactivate_ten_plugin' );
 
