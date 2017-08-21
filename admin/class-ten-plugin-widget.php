@@ -34,7 +34,7 @@ class Ten_Plugin_Widget extends WP_Widget {
 			__('TEN Widget', 'ten_plugin_domain'),
 
 			// Widget description
-			array( 'description' => __( 'Sample widget based on WPBeginner Tutorial', 'ten_plugin_domain' ), )
+			array( 'description' => __( 'A Lovely Kitty Plugin', 'ten_plugin_domain' ), )
 			);
 		}
 		/**
@@ -61,7 +61,7 @@ class Ten_Plugin_Widget extends WP_Widget {
 					if ($xml === false) {
 						echo '<strong>No data available at this time</strong>';
 					} else {
-
+					
 						echo '<h4>Ten Plugin</h4>';
 
 				    foreach ($xml->data->images->image as $image ) {

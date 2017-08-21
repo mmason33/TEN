@@ -78,7 +78,6 @@ class Ten_Plugin {
 	 * Include the following files that make up the plugin:
 	 *
 	 * - Ten_Plugin_Loader. Orchestrates the hooks of the plugin.
-	 * - Ten_Plugin_i18n. Defines internationalization functionality.
 	 * - Ten_Plugin_Admin. Defines all hooks for the admin area.
 	 * - Ten_Plugin_Public. Defines all hooks for the public side of the site.
 	 *
@@ -145,7 +144,6 @@ class Ten_Plugin {
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
-		// $this->loader->add_action('dynamic_sidebar', $plugin_public, 'display_widget');
 
 	}
 
@@ -161,8 +159,6 @@ class Ten_Plugin {
 		$plugin_widget = new Ten_Plugin_Widget( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'widgets_init', $plugin_widget, 'ten_plugin_load_widget' );
-		// $this->loader->add_action( 'widgets_init', $plugin_widget, 'ten_plugin_widget' );
-		// $this->loader->add_action( 'sidebar_admin_setup', $plugin_widget, 'form' );
 
 	}
 

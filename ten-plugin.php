@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The plugin bootstrap file
  *
@@ -29,9 +28,6 @@
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
-
-register_activation_hook( __FILE__, 'activate_ten_plugin' );
-register_deactivation_hook( __FILE__, 'deactivate_ten_plugin' );
 
 /**
  * The core plugin class that is used to define internationalization,
